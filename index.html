@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--link rel="stylesheet" type="text/css" media="screen" href="main.css" /-->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Pangolin" rel="stylesheet">
+    
+    <style>
+        .pangolin{font-family: 'Pangolin', cursive;}
+        .imgWidth200{max-width: 200px;}
+        .container{max-width:800px;}
+    </style>
+</head>
+<body class="bg-dark">
+
+    <div class="container text-center border p-3 mt-3 mb-3">
+        <h1 class="text-center text-light pangolin">Gif / Movie Search</h1>
+        <input name="title" type="text" class="form-control text-center mb-3" id="inputTextSearch" value="" placeholder="Type Search...">
+        
+            <!-- Choose GIFS -->
+        <span class= "btn bg-success text-white mb-3" id="addBtn">Search GIFs</span>
+            <!-- Choose Movies -->
+        <span class= "btn bg-success text-muted mb-3" id="addMovieBtn">Search Movies</span>
+        
+        <!-- Buttons Div -->
+        <div class="buttons mb-3"></div>
+        <!-- GIF Display Div -->
+        <div class="text-center row" id="baba"></div>
+        <!-- Movie Display Div -->
+        <div class="text-center row" id="movie-info"></div>
+        <!-- Add 10 More GIFs Button -->
+        <button class= "btn bg-info text-light mb-3" id="viewMore">See More Gifs</button>
+    </div>
+    <script src="assets/java/main.js"></script>
+</body>
+</html>

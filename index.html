@@ -8,24 +8,30 @@
     <!--link rel="stylesheet" type="text/css" media="screen" href="main.css" /-->
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/mobile.css">
     <link href="https://fonts.googleapis.com/css?family=Pangolin" rel="stylesheet">
     
     <style>
+        body{width:100%; padding-right:-15px;}
         .pangolin{font-family: 'Pangolin', cursive;}
         .imgWidth200{max-width: 200px auto;height:auto;}
-        .container{max-width:800px;}
+        .width100{width:100%;}
+        .container-fluid{max-width:800px;}
+        #myPortfolio{font-size: 1.5rem;}
+        #footerBottom{position: relative; bottom:0;}
     </style>
 </head>
 <body class="bg-dark">
-
-    <div class="container text-center p-3 mt-3 mb-3">
-        <h1 class="text-center text-light pangolin">Gif Search</h1>
+    <div class="container-fluid text-center mt-3 mb-3">
+        <h1 class="text-center text-light pangolin mb-0 pb-0"><span class="text-info">Gif</span> Search</h1>
+        <p class="text-secondary">Powered by GIPHY</p>
         <input name="title" type="text" class="form-control text-center mb-3" id="inputTextSearch" value="" placeholder="Type Search...">
         
             <!-- Choose GIFS -->
-        <span class= "btn bg-danger text-white mb-3 submit" id="addBtn">Search GIFs</span>
+        <span class= "btn bg-success text-white mb-3 submit" id="addBtn">Search GIFs</span>
             <!-- Choose Movies -->
         <span class= "btn bg-info text-white mb-3" id="favBtn">Favorites</span>
         
@@ -36,7 +42,54 @@
         <!-- Movie Display Div -->
         <div class="text-center row" id="movie-info"></div>
         <!-- Add 10 More GIFs Button -->
-        <button class= "btn bg-info text-light mb-3" id="viewMore">See More Gifs</button>
+        <button class= "btn bg-info text-light mb-1 mt-3" id="viewMore">Show More Gifs</button>
+
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+        
+    <div id="footerBottom" class="container-fluid text-center bg-secondary text-dark pb-2 pt-1">
+        
+            <h5 class="mt-1 mb-0 text-center pangolin"> Try my Other Games or check out <a class="pangolin btn p-0 text-info" id="myPortfolio" target="_blank" href="https://sunshinedaydeam.github.io/Bootstrap-Portfolio/portfolio-redesign.html">My Portfolio</a></h5>
+            <div class="row pl-3 pr-3 pt-3 mb-3">
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="card bg-dark pb-1 text-center">
+                        <a href = "https://sunshinedaydeam.github.io/Trivia-Game/index.html" target="_blank">
+                            <p class ="bitter mb-0">Trivia Game</p>
+                            <img src="assets/images/trivia-game.png" width="150px"  height="130px">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="card bg-dark pb-1 text-center">
+                        <a href = "https://sunshinedaydeam.github.io/Bunny-Wars-RPG/" target="_blank">
+                            <p class ="bitter mb-0">Bunny Wars!</p>
+                            <img src="assets/images/BunnyWars.png" width="150px" height="130px">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="card bg-dark pb-1 text-center">
+                        <a href = "https://sunshinedaydeam.github.io/Crystal-Collector/index.html" target="_blank">
+                            <p class ="bitter mb-0">Crystal Collector</p>
+                            <img src="assets/images/CrystalCollector.png" width="150px" height="130px">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="card bg-dark pb-1 text-center">
+                        <a href = "https://sunshinedaydeam.github.io/Word_Guess_Game/index.html" target="_blank">
+                            <p class ="bitter mb-0">Hangman</p>
+                            <img src="assets/images/Hangman.png" width="150px"  height="130px">
+                        </a>
+                    </div>
+                </div>                        
+            </div>              
+            <p class="mb-0">This page was coded by Alex Bruner</p>
+            <p class="mb-0">Copyright 2018</p>
     </div>
     <script src="assets/java/main.js"></script>
 </body>

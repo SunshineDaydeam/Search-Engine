@@ -32,7 +32,7 @@
         var userSearch = "";                                        //define user search variable
         var gif="";                                                 //define gif variable
         var limit = 10;                                             //set show limit to 10
-
+        $("#viewMore").hide();                                      //hide view more button
         //update buttons display FUNCTION
         function updateButtonDisplay(){                         
             gifList.sort();                                             //sort giflist                             
@@ -94,6 +94,7 @@
                         $("#baba").prepend(col);            //Display Col to Html
                     };
             });
+            $("#viewMore").show();                          //show view more button
         };
         //display gifs button is clicked FUNCTION
         function buttonGifDisplay(){
@@ -131,7 +132,7 @@
 
         //click handlers
 
-        //Search Gifs Button
+        //When user Clicks Submit
         $(".submit").on ("click",function(event){
             event.preventDefault();                                             //prevent default
             userSearch = $("#inputTextSearch").val();                           //set userSearch as inputtextsearch.value
@@ -147,53 +148,57 @@
             }
         });
 
-        //Allow user to type "enter" to trigger  search
-        $("#inputTextSearch").keyup(function(){                     //when user types key
-            if (event.keyCode === 13){                              //if the key was enter-key
-                event.preventDefault();                             //prevent default
-                userSearch = $("#inputTextSearch").val();           //set userSearch as inputtextsearch.value
-                if (userSearch.trim() != ""){                       //if userSearch isn't blank
-                    gifList.push(userSearch.trim());                //add userSearch to gifList
-                    localStorage.setItem("gifList", gifList);       //update localstorage.giflist
-                    gif=userSearch;                                 //assign var gif = userSearch
-                    limit=10;                                       //reset limit to 10
-                updateButtonDisplay();                              //create new button for userSearch
-                displayGifs();                                      //show gifs on screen
-            }
+        //When user types Enter
+        $("#inputTextSearch").keyup(function(){                         //when user types key
+            if (event.keyCode === 13){                                  //if the key was enter-key
+                event.preventDefault();                                 //prevent default
+                userSearch = $("#inputTextSearch").val();               //set userSearch as inputtextsearch.value
+                if (userSearch.trim() != ""){                           //if userSearch isn't blank
+                    if (localStorage.gifList.split(",").indexOf(userSearch) == -1){ //if userSearch hasn't been entered already
+                        gifList.push(userSearch.trim());                //add userSearch to gifList
+                        localStorage.setItem("gifList", gifList);       //update localstorage.giflist
+                        gif=userSearch;                                 //assign var gif = userSearch
+                        limit=10;                                       //reset limit to 10
+                        updateButtonDisplay();                          //create new button for userSearch
+                    }
+                displayGifs();                                          //show gifs on screen
+                }
             };
         });
 
-        //View More Gifs Button (adds 10 more gifs to screen)
+        //When user clicks "View More"
         $("#viewMore").click(function(){                        
             limit +=10;                                         //Increase number fo Gifs on screen +10  
             displayGifs();                                      //Display the Gifs
         });        
 
-        //show favorites on screen (same as gifList but for favList)
+        //When user wants to view favorites
         $("#favBtn").click(function(){
-            var savedId = localStorage.favList.split(",");
-            
-            for (i=0; i<savedId.length; i++){
-                $("#baba").empty();
+            $("#viewMore").hide();                                              //hide view more button
+            var savedId = localStorage.favList.split(",");                      //define savedId
+            if (savedId.length>1){                                              //if there is at least 1 favorited gif
+            $("#baba").empty();                                                 //clear shown gifs
+            for (i=0; i<savedId.length; i++){                                   //for the number of favorited gifs...                                                       
+                //search query url by id's
                 var queryURL = "https://api.giphy.com/v1/gifs/"+ savedId[i] + "?api_key=29AwsyFWZJ8NLj3iM3GpEwp0NzECNriT";
                 console.log(savedId[i]);
                 $.ajax({
                     url: queryURL,
                     method: "GET"
-                    }).then(function(response){
-                        console.log(response);
-                            var col = $("<div>");
-                                col.addClass("col-sm-4 col-md-3 mb-3 text-center");
-                            var card = $("<div>");
+                }).then(function(response){
+                    console.log(response);
+                    var col = $("<div>");
+                        col.addClass("col-sm-4 col-md-3 mb-3 text-center");
+                    var card = $("<div>");
                                 card.addClass("card p-2");
-                            var img = $("<img>");
-                                img.addClass("bg-light border border-dark gifClick imgWidth200");
+                    var img = $("<img>");
+                            img.addClass("bg-light border border-dark gifClick imgWidth200");
                                 img.attr("src", response.data.images.fixed_width_still.url);
                                 img.attr("data-gifStill", response.data.images.fixed_width_still.url);
                                 img.attr("data-gifPlay", response.data.images.fixed_width.url);
                                 img.attr("data-state", "still")
              
-                            var title = $("<h6>");
+                    var title = $("<h6>");
                                 if (response.data.title.trim() !=""){
                                     title.text(response.data.title);
                                 }
@@ -209,11 +214,20 @@
                                 card.append(img);
                                 card.append(rating);
                             $("#baba").prepend(col);
-                });
-
-            };
-                                    
-            
+                    });
+                };
+            }                        
+            //if no favorites are saved, display a message on the screen
+            else{
+                $("#baba").empty();
+                var col2 = $("<div>");
+                    col2.addClass("col-sm-12")
+                var h1 = $("<h3>");
+                    h1.addClass("text-center text-danger font-italic mt-3");
+                    h1.text("You haven't favorited anything yet!")
+                    col2.html(h1);
+                $("#baba").append(col2);
+            }
         });
         
         $(document).on("click", ".baba", buttonGifDisplay);     //When a button is clicked, display Gifs

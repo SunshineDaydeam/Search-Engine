@@ -1,0 +1,14 @@
+@media only screen and (max-width: 575px)   {
+
+    .gifClick{
+        width:auto;
+        max-width: 200px;
+        height: auto;
+        margin: 1rem auto;
+    }
+
+    .baba{
+        font-size: 10px;
+    }
+
+}

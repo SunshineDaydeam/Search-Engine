@@ -54,7 +54,7 @@
             
             var rating ="";                                         //define rating as ""
             //define queryURL
-            var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + gif +"&api_key=29AwsyFWZJ8NLj3iM3GpEwp0NzECNriT&limit=" + limit + "&rating=" + rating;
+            var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + gif +"&api_key=29AwsyFWZJ8NLj3iM3GpEwp0NzECNriT&limit=" + limit + "&rating=" + rating;
                         
             $.ajax({                                                
                 url: queryURL,
@@ -178,7 +178,7 @@
             
             for (i=0; i<savedId.length; i++){
                 $("#baba").empty();
-                var queryURL = "http://api.giphy.com/v1/gifs/"+ savedId[i] + "?api_key=29AwsyFWZJ8NLj3iM3GpEwp0NzECNriT";
+                var queryURL = "https://api.giphy.com/v1/gifs/"+ savedId[i] + "?api_key=29AwsyFWZJ8NLj3iM3GpEwp0NzECNriT";
                 console.log(savedId[i]);
                 $.ajax({
                     url: queryURL,

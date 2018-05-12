@@ -29,13 +29,11 @@
             console.log(gifList);           
         };
         
-
-        
         var userSearch = "";                                        //define user search variable
         var gif="";                                                 //define gif variable
         var limit = 10;                                             //set show limit to 10
 
-        //add and update buttons FUNCTION
+        //update buttons display FUNCTION
         function updateButtonDisplay(){                         
             gifList.sort();                                             //sort giflist                             
             $(".buttons").empty();                                      //clear current buttons
@@ -47,7 +45,6 @@
                 $(".buttons").append(btn);                              //append the button to buttons
             };
         };
-
         //display gifs FUNCTION
         function displayGifs(){
             $("#baba").empty();                                     //clear current gifs on screen
@@ -150,7 +147,7 @@
             }
         });
 
-        //Allow user to type enter to trigger  search
+        //Allow user to type "enter" to trigger  search
         $("#inputTextSearch").keyup(function(){                     //when user types key
             if (event.keyCode === 13){                              //if the key was enter-key
                 event.preventDefault();                             //prevent default
@@ -172,7 +169,7 @@
             displayGifs();                                      //Display the Gifs
         });        
 
-        //show favorites on screen
+        //show favorites on screen (same as gifList but for favList)
         $("#favBtn").click(function(){
             var savedId = localStorage.favList.split(",");
             

@@ -1,4 +1,5 @@
 # Search-Engine
+### https://sunshinedaydeam.github.io/Search-Engine/index.html
 Homework Assignment Gif-Tastic
 
 A Web based Javascript/ HTML5 Gif fetching application that uses the GIPHY API to fetch users choice of GIFs.
@@ -12,3 +13,5 @@ Features
 -Allows users to save their favorite gifs to a favorites section and stores to local storage.
 
 Page was created by Alex Bruner.
+
+Email: ***alexbruner@live.com***
